@@ -47,6 +47,13 @@ y se divide en las siguientes capaz de logicas
 
 Se agrego una base de datos embebida en memoria del tipo H2 para persistir los datos de las pruebas
 
+## Testing
+
+Se realizaron Integration testing y Unit testing para el controlador
+y los servicios respectivamente estos se encuentran en las siguientes carpeta
+
+- src/test/java/com/sondeos/codechallenge/controller/libro/LibroControllerImplTest.java
+- src/test/java/com/sondeos/codechallenge/service/libro/LibroServiceImplTest.java
 
 
 ## Demo
