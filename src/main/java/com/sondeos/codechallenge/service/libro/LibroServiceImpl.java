@@ -4,6 +4,8 @@ import com.sondeos.codechallenge.entity.Libro;
 import com.sondeos.codechallenge.exception.ObjectNotFoundException;
 import com.sondeos.codechallenge.repository.libro.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -94,4 +96,8 @@ public class LibroServiceImpl implements LibrosService {
     }
 
 
+    @Override
+    public Page<Libro> getPaginator(Pageable pageable) {
+        return this.repositorio.findAll(pageable);
+    }
 }

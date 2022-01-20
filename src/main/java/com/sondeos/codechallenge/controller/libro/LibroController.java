@@ -1,8 +1,11 @@
 package com.sondeos.codechallenge.controller.libro;
 
-import com.sondeos.codechallenge.controller.ControllerRestCrud;
-import com.sondeos.codechallenge.entity.Libro;
 
-public interface LibroController extends ControllerRestCrud<Libro, String> {
+import com.sondeos.codechallenge.entity.Libro;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+public interface LibroController   {
+    Page<Libro> doGetPaginator(Pageable pageable);
 
 }

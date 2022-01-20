@@ -1,10 +1,11 @@
 package com.sondeos.codechallenge.entity;
 
-import com.sondeos.codechallenge.entity.superclass.ID;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -16,35 +17,38 @@ import java.util.Date;
  *
  */
 @Entity
-public class Libro extends ID implements Serializable {
+@Data
+@Table(uniqueConstraints= @UniqueConstraint(columnNames = {"titulo", "autor"}) )
+public class Libro  implements Serializable {
 
     private static final long serialVersionUID = -5168569355148403347L;
     /**
+     * columna de identificacion de la entidad
+     */
+    @Id
+    @GeneratedValue(generator="uuid2")
+    @GenericGenerator(name="uuid2",strategy = "uuid2")
+    private String id;
+
+    /**
      * Titulo del libro
      */
-    @Getter
-    @Setter
     @NotBlank
     private String titulo;
     /**
      * Titulo del autor del libro
      */
-    @Getter
-    @Setter
     @NotBlank
     private String autor;
     /**
      * Precio asociado al libro
      */
-    @Getter
-    @Setter
-    @Min(1)
+    @Min(0)
+    @NotNull
     private Double precio;
     /**
      * Fecha de lanzamiento de libro
      */
-    @Getter
-    @Setter
     @NotNull
     private Date fechaLanzamiento;
 
